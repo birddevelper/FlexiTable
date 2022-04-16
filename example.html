@@ -6,7 +6,7 @@
         <style>
             .mytable {
                 border: 1px solid #000000;
-                width: 40%;
+                width: 80%;
             }
             
             .mytable tr th {
@@ -33,7 +33,7 @@
         <div id="tableContainer"></div>
 
         <script>
-            $("#tableContainer").jsonToHtmlTable(data,"mytable");
+            $("#tableContainer").jsonToHtmlTable(data,"mytable",false,", ");
         </script>
     </body>
 </html>

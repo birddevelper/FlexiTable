@@ -113,7 +113,8 @@ function buildTable(list,selector, arraySeperator) {
             var val = null;
             if(cols[colIndex].indexOf(',')>0){
                 fields = cols[colIndex].split(',');
-                val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],arraySeperator);
+                if(list[i][fields[0]])
+                    val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],arraySeperator);
             }
             else
                 val = ArrayItemsSeperator(list[i][cols[colIndex]],arraySeperator);

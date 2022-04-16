@@ -43,7 +43,8 @@ var data = [
         "Mathematics" : 16,
         "C++" : 17
     },
-    "Year" : 2022
+    "Year" : 2022,
+    "Test" : { "f1":1, "f2":3}
 },
 {
     "Id" : 3,

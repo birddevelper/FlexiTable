@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="jquery.jsontotable.js" ></script>
+        <script src="sampleData.js"></script>
+        <style>
+            .mytable {
+                border: 1px solid #000000;
+                width: 40%;
+            }
+            
+            .mytable tr th {
+                border: 1px solid #000000;
+                background-color: azure;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="tableContainer"></div>
+
+        <script>
+            $("#tableContainer").jsonToHtmlTable(data,"mytable");
+        </script>
+    </body>
+</html>

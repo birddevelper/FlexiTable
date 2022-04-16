@@ -26,7 +26,7 @@ var data = [
     "Name" : "Julia Fin",
     "Age" : 30,
     "Grades" : {
-        "Physics" : 20,
+        "Sport" : 20,
         "Mathematics" : 11,
         "Computer Lab" : 17
     },

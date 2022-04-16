@@ -57,10 +57,10 @@ function ExtractHeaders(list, selector) {
                     innerHeaderCount = 0;//getPropertiesCount(row[column])+1;
                     var topLevelHeader = $('<th />');
                     firstHeader.append(topLevelHeader.html(column));
-                    for (var i = 0; i < list.length; i++) {
+                    for (var j = 0; j < list.length; j++) {
                         
-                        for (var innerColumn in list[i][column]) {
-                            if (list[i][column].hasOwnProperty(innerColumn)) {
+                        for (var innerColumn in list[j][column]) {
+                            if (list[j][column].hasOwnProperty(innerColumn)) {
                                 
                                 if ($.inArray(column + ',' + innerColumn, columns) == -1) {
                                     columns.push(column + ',' + innerColumn);
@@ -91,11 +91,18 @@ function ExtractHeaders(list, selector) {
     return columns;
 } 
 
+function ArrayItemsSeperator(object,seperator){
+    if(checkType(object)=="Array"){
+        return object.join(seperator);
+    }
 
+    return object;
+}
 
-function buildTable(list,selector,oddRowCssClass,evenRowCssClass) {
+function buildTable(list,selector, arraySeperator) {
              
-    // Getting the all column names
+    
+    // extract titles from the data and build the header of the table
     var cols = ExtractHeaders(list, selector); 
 
     // Traversing the JSON data
@@ -106,10 +113,10 @@ function buildTable(list,selector,oddRowCssClass,evenRowCssClass) {
             var val = null;
             if(cols[colIndex].indexOf(',')>0){
                 fields = cols[colIndex].split(',');
-                val = list[i][fields[0]][fields[1]];
+                val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],arraySeperator);
             }
             else
-                val = list[i][cols[colIndex]];
+                val = ArrayItemsSeperator(list[i][cols[colIndex]],arraySeperator);
              
             // If there is any key, which is matching
             // with the column name
@@ -124,15 +131,18 @@ function buildTable(list,selector,oddRowCssClass,evenRowCssClass) {
 
 
 
-$.fn.jsonToHtmlTable = function(jsonData, tableCssClass="", headerCssClass="", oddRowCssClass="", evenRowCssClass="") {
+$.fn.jsonToHtmlTable = function(jsonData, tableCssClass="", rtl=false, arraySeperator=", ") {
 
     // create root table element
     var table = $('<table/>');
+    // if rtl is true change direction of the table to RightToLeft
+    if(rtl)
+        table.attr("dir","rtl");
+
     // add CSS class(es) to table element
     table.addClass(tableCssClass);
-    // extract titles from the data and build the header of the table
-    //ExtractHeaders(jsonData,table,headerCssClass);
-    buildTable(jsonData,table,oddRowCssClass,evenRowCssClass);
+    
+    buildTable(jsonData,table, arraySeperator);
     this.html(table);
     
 };

@@ -2,10 +2,12 @@ var stringConstructor = "test".constructor;
 var arrayConstructor = [].constructor;
 var objectConstructor = ({}).constructor;
 
+// This function remove item from array by its value
 function removeItemFromArray(arr, item){
     return arr.filter(f => f !== item)
    }
 
+// This function returns the given object's type
 function checkType(object) {
     if (object === null) {
         return "null";
@@ -27,15 +29,6 @@ function checkType(object) {
     
 }
 
-function getPropertiesCount(object, list){
-    var count = 0;
-    for (var k in object) {
-        if (object.hasOwnProperty(k)) 
-            count++;
-    }
-
-    return count;
-}
 
 // This function finds keys in the data and add a corresponding headers in the table
 function ExtractHeaders(list, selector) {
@@ -43,18 +36,20 @@ function ExtractHeaders(list, selector) {
     var firstHeader = $('<tr/>');
     var secondHeader = $('<tr/>');
     var removeList = [];
+
+    // iterate over the data list
     for (var i = 0; i < list.length; i++) {
         var row = list[i];
-         
+        // travers over the row columns 
         for (var column in row) {
+            // skip if the column is already addded to header
             if ($.inArray(column, columns) == -1) {
                 columns.push(column);
                  
-                // Creating the header
+                // if the column is an object retrieve its fields and add them below the root column
                 if(checkType(row[column])=="Object"){
                     
-                    //columns.pop();
-                    innerHeaderCount = 0;//getPropertiesCount(row[column])+1;
+                    innerHeaderCount = 0;
                     var topLevelHeader = $('<th />');
                     firstHeader.append(topLevelHeader.html(column));
                     for (var j = 0; j < list.length; j++) {
@@ -130,20 +125,54 @@ function buildTable(list,selector, arraySeperator) {
     }
 }
 
+async function loadData(options){
+    jsonData = null;
+
+    if(!options.data)
+        return null;
+
+    if(checkType(options.data)=="Array"){
+        jsonData = options.data;
+    }
+    else if(checkType(options.data)=="String") {
+        jsonData = await  $.getJSON(options.data, function(data) {
+            console.log("Data retrieved from url ")
+          })
+          .fail(function() {
+            console.error( "Can not retrieve json data from " + options.data );
+          });
+    }
+
+    return jsonData;
+}
 
 
-$.fn.jsonToHtmlTable = function(jsonData, tableCssClass="", rtl=false, arraySeperator=", ") {
+// options : 
+// {
+//  data : Json array , or url to retrieve json array
+//
+// }
+$.fn.jsonToHtmlTable = async function(options) {
 
+    var jsonData = null;
+
+    jsonData = await loadData(options);
+    
+    if(!options.tableCssClass)
+        options.tableCssClass = "";
+    
+    if(!options.arraySeperator)
+        arraySeperator=", "
     // create root table element
     var table = $('<table/>');
     // if rtl is true change direction of the table to RightToLeft
-    if(rtl)
+    if(options.rtl)
         table.attr("dir","rtl");
 
     // add CSS class(es) to table element
-    table.addClass(tableCssClass);
+    table.addClass(options.tableCssClass);
     
-    buildTable(jsonData,table, arraySeperator);
+    buildTable(jsonData,table, options.arraySeperator);
     this.html(table);
     
 };

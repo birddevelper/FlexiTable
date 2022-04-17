@@ -131,10 +131,13 @@ async function loadData(options){
     if(!options.data)
         return null;
 
+    // if data is given as json array, no proccess needed
     if(checkType(options.data)=="Array"){
         jsonData = options.data;
     }
+    // if data is given as url, call the url and retrieve json data
     else if(checkType(options.data)=="String") {
+        // call the url and wait for its response
         jsonData = await  $.getJSON(options.data, function(data) {
             console.log("Data retrieved from url ")
           })
@@ -149,8 +152,10 @@ async function loadData(options){
 
 // options : 
 // {
-//  data : Json array , or url to retrieve json array
-//
+//  data : Json array (Json Array) , or url to retrieve json array (String)
+//  tableCssClass : Css classes to be set for table (String)
+//  rtl : Indicates right to left direction. (Boolean, Default : false)
+//  arraySeperator : Indicates the character(s) between array items in cells
 // }
 $.fn.jsonToHtmlTable = async function(options) {
 

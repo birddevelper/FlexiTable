@@ -33,7 +33,14 @@
         <div id="tableContainer"></div>
 
         <script>
-            $("#tableContainer").jsonToHtmlTable(data,"mytable",false,", ");
+            $("#tableContainer").jsonToHtmlTable({
+                data : data,
+                tableCssClass : 'mytable'
+            });
+
+
+
+
         </script>
     </body>
 </html>

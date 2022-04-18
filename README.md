@@ -64,4 +64,4 @@ $("#tableContainer").jsonToHtmlTable({
 
 Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/master/sampleData.js) :
 
-![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jqueryjsontotable.jpg)
+![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table.jpg)

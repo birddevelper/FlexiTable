@@ -3,8 +3,8 @@ jQueryJsonToTable is a professional jQuery plugin that convert JSON array list i
 
 ## Features 
 
-- It accepts Json data
-- It accepts url to fetch json data
+- Accepts Json data
+- Accepts url to fetch json data
 - Supports embeded object up to 1 level
 - Css class
 - Both LTR and RTL direction is supported

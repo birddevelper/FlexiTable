@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/jqueryjsontotable.svg)](https://badge.fury.io/js/jqueryjsontotable)
+
 # jQueryJsonToTable
 jQueryJsonToTable is a professional jQuery plugin that convert JSON array list into HTML table
 

@@ -21,7 +21,20 @@ This plugin is compatible with jquery-2.2.4 and later versions (earlier versions
 <script src="jquery.jsontotable.js" ></script>
 ```
 
-Then the plugin function can be called on any container element such as Div. See the example below :
+Then the plugin function can be called on any container element such as Div. Function parameters are :
+
+```
+{
+  data : Json array (Json Array) , or url to retrieve json array (String) *Required
+  tableCssClass : Css classes to be set for table (String)
+  tableId : id attribute of the table tag (Strig)
+  rtl : Indicates right to left direction. (Boolean, Default : false)
+  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
+}
+```
+
+
+ See the example below :
 
 ```html
 

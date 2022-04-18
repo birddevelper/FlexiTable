@@ -52,7 +52,7 @@ var data = [
 }
 ];
 
-$("#tableContainer").jsonToHtmlTable({
+$("#mydiv").jsonToHtmlTable({
     data : data,
     tableCssClass : 'mytable',
     tableId : 'studentsTable'

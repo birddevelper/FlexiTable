@@ -152,10 +152,11 @@ async function loadData(options){
 
 // options : 
 // {
-//  data : Json array (Json Array) , or url to retrieve json array (String)
+//  data : Json array (Json Array) , or url to retrieve json array (String) *Required
 //  tableCssClass : Css classes to be set for table (String)
+//  tableId : id attribute of the table tag (Strig)
 //  rtl : Indicates right to left direction. (Boolean, Default : false)
-//  arraySeperator : Indicates the character(s) between array items in cells
+//  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
 // }
 $.fn.jsonToHtmlTable = async function(options) {
 
@@ -174,6 +175,8 @@ $.fn.jsonToHtmlTable = async function(options) {
     if(options.rtl)
         table.attr("dir","rtl");
 
+    if(options.tableId)
+        table.attr("id",options.tableId);
     // add CSS class(es) to table element
     table.addClass(options.tableCssClass);
     

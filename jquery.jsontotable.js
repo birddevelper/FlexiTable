@@ -150,6 +150,32 @@ async function loadData(options){
 }
 
 
+function initiateTable(options){
+
+        // create root table element
+        var table = $('<table/>');
+        // if rtl is true change direction of the table to RightToLeft
+        if(options.rtl)
+            table.attr("dir","rtl");
+    
+        if(options.tableId)
+            table.attr("id",options.tableId);
+        // add CSS class(es) to table element
+        table.addClass(options.tableCssClass);
+        
+        return table;
+}
+
+
+
+async function feedTableWithJson(selector,options){
+    var table = initiateTable(options)
+    var jsonData = await loadData(options);
+    buildTable(jsonData,table, options.arraySeperator);
+    selector.html(table);
+}
+
+
 // options : 
 // {
 //  data : Json array (Json Array) , or url to retrieve json array (String) *Required
@@ -160,27 +186,26 @@ async function loadData(options){
 // }
 $.fn.jsonToHtmlTable = async function(options) {
 
-    var jsonData = null;
-
-    jsonData = await loadData(options);
+    //var jsonData = null;
+    //var table = null;
+    
     
     if(!options.tableCssClass)
         options.tableCssClass = "";
     
     if(!options.arraySeperator)
         arraySeperator=", "
-    // create root table element
-    var table = $('<table/>');
-    // if rtl is true change direction of the table to RightToLeft
-    if(options.rtl)
-        table.attr("dir","rtl");
 
-    if(options.tableId)
-        table.attr("id",options.tableId);
-    // add CSS class(es) to table element
-    table.addClass(options.tableCssClass);
     
-    buildTable(jsonData,table, options.arraySeperator);
-    this.html(table);
+    
+    if(options.refreshPriod){
+        var selector = this;
+        feedTableWithJson(selector,options);
+        setInterval( function (selectr) {feedTableWithJson(selector,options);}, options.refreshPriod);
+    }
+    else {
+        feedTableWithJson(this,options);
+    }
+        
     
 };

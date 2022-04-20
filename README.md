@@ -85,3 +85,12 @@ $("#mydiv").jsonToHtmlTable({
 Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/master/sampleData.js) :
 
 ![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
+
+
+
+## To Do List
+
+- Css themes
+- Unlimited nested object
+- Customized Titles
+- Aggregation function (Sum, Count, Avg) in footer row

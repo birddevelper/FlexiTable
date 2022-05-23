@@ -1,11 +1,12 @@
 [![npm version](https://badge.fury.io/js/jqueryjsontotable.svg)](https://badge.fury.io/js/jqueryjsontotable)
 
 # FlexiTable
+
 FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML table
 
 ![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
 
-## Features 
+## Features
 
 - Accepts Json data
 - Accepts url to fetch json data
@@ -21,7 +22,7 @@ This plugin is compatible with jquery-2.2.4 and later versions (earlier versions
 
 ```html
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="jquery.jsontotable.js" ></script>
+<script src="jquery.flexitable.js" ></script>
 ```
 
 Then the plugin function can be called on any container element such as Div. Function parameters are :
@@ -37,7 +38,6 @@ Then the plugin function can be called on any container element such as Div. Fun
 
 }
 ```
-
 
  See the example below :
 
@@ -85,8 +85,6 @@ $("#mydiv").jsonToHtmlTable({
 Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/master/sampleData.js) :
 
 ![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
-
-
 
 ## To Do List
 

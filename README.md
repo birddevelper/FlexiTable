@@ -11,10 +11,10 @@ FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML ta
 - Accepts Json data
 - Accepts url to fetch json data
 - Supports nested object up to 1 level
-- Refesh table data and structure in custom priods
-- Css class
-- Both LTR and RTL direction is supported
-- supports arrays as a table's column
+- Refesh data and structure in custom priods
+- Supports CSS classes
+- Supports LTR and RTL directions
+- supports arrays as a multi values cell
 
 ## How to use
 
@@ -88,7 +88,7 @@ Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/m
 
 ## To Do List
 
-- Css themes
-- Unlimited nested object
+- CSS themes
+- Unlimited nested objects
 - Customized Titles
-- Aggregation function (Sum, Count, Avg) in footer row
+- Aggregation function (Sum, Count, Avg) in footer

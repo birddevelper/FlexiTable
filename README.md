@@ -14,11 +14,12 @@ FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML ta
 - Refesh data and structure in custom priods
 - Supports CSS classes
 - Supports LTR and RTL directions
-- supports arrays as a multi values cell
+- supports arrays as a multi-values cell
 
 ## How to use
 
-This plugin is compatible with jquery-2.2.4 and later versions (earlier versions are not tested).Import the plugin as following code :
+This plugin works with jquery-2.2.4 and later versions (Earlier versions are not tested).
+Import the plugin as following code :
 
 ```html
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

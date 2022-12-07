@@ -128,7 +128,8 @@ function buildTable(list,selector, arraySeperator) {
 async function loadData(options){
     jsonData = null;
 
-    if(!options.data)
+    // if data is not defined or it is an empty string return null
+    if(!options.data || options.data=="")
         return null;
 
     // if data is given as json array, no proccess needed

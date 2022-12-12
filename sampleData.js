@@ -47,7 +47,7 @@ var data = [
     "Overal" : { "S1":"A", "S2":"B"}
 },
 {
-    "Id" : 3,
+    "Id" : 5,
     "Name" : "Sam Juliani",
     "Age" : 30,
     "Grades" : {
@@ -58,9 +58,9 @@ var data = [
     "Year" : 2022
 },
 {
-    "Id" : 3,
+    "Id" : 6,
     "Name" : "Fred Nephew",
-    "Age" : 30,
+    "Age" : 26,
     "Grades" : {
         "Sport" : 20,
         "Automata Theory" : 18,

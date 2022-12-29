@@ -194,7 +194,8 @@ $.fn.jsonToHtmlTable = async function(options) {
     
     if(!options.tableCssClass)
         options.tableCssClass = "";
-    
+   
+    // if no arraySeperator exist in options object, set default seperator
     if(!options.arraySeperator)
         arraySeperator=", "
 

@@ -73,7 +73,7 @@ var data = [
 }
 ];
 
-$("#mydiv").jsonToHtmlTable({
+$("#mydiv").flexiTable({
     data : data,
     tableCssClass : 'mytable',
     tableId : 'studentsTable'
@@ -123,7 +123,7 @@ var data = [
 
 
 var dataTable  ;
-$.jsonToHtmlTable({
+$.flexiTable({
     data : data,
     tableCssClass : 'mytable',
     tableId : 'studentsTable'

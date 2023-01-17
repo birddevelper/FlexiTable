@@ -202,7 +202,7 @@ async function embedJsonTableToContainer(selector,options){
 //  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
 //  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
 // }
-$.jsonToHtmlTable = $.fn.jsonToHtmlTable = async function(options) {
+$.flexiTable = $.fn.flexiTable = async function(options) {
     
     if(this.jquery){
         if(options.refreshPriod){

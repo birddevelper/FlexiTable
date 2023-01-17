@@ -168,13 +168,29 @@ function initiateTable(options){
 }
 
 
+async function generateTable(options) {
+    if(!options.tableCssClass)
+    options.tableCssClass = "";
 
-async function feedTableWithJson(selector,options){
-    var table = initiateTable(options)
+    // if no arraySeperator exist in options object, set default seperator
+    if(!options.arraySeperator)
+        arraySeperator=", ";
+
+    var table = initiateTable(options);
     var jsonData = await loadData(options);
-    buildTable(jsonData,table, options.arraySeperator);
+    buildTable(jsonData, table, options.arraySeperator);
+    return table;
+}
+
+
+async function embedJsonTableToContainer(selector,options){
+    var table = await generateTable(options);
     selector.html(table);
 }
+
+
+
+
 
 
 // options : 
@@ -184,31 +200,26 @@ async function feedTableWithJson(selector,options){
 //  tableId : id attribute of the table tag (Strig)
 //  rtl : Indicates right to left direction. (Boolean, Default : false)
 //  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
-//  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. )
+//  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
 // }
-$.fn.jsonToHtmlTable = async function(options) {
-
-    //var jsonData = null;
-    //var table = null;
+$.jsonToHtmlTable = $.fn.jsonToHtmlTable = async function(options) {
     
-    
-    if(!options.tableCssClass)
-        options.tableCssClass = "";
-   
-    // if no arraySeperator exist in options object, set default seperator
-    if(!options.arraySeperator)
-        arraySeperator=", "
-
-    
-    
-    if(options.refreshPriod){
-        var selector = this;
-        feedTableWithJson(selector,options);
-        setInterval( function (selectr) {feedTableWithJson(selector,options);}, options.refreshPriod);
+    if(this.jquery){
+        if(options.refreshPriod){
+            var selector = this;
+            embedJsonTableToContainer(selector,options);
+            setInterval( function (selectr) {embedJsonTableToContainer(selector,options);}, options.refreshPriod);
+        }
+        else {
+            embedJsonTableToContainer(this,options);
+        }
     }
-    else {
-        feedTableWithJson(this,options);
+    else
+    {
+        return generateTable(options);
     }
         
     
 };
+
+

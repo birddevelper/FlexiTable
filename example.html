@@ -41,6 +41,12 @@
             });
 
 
+            var dataTable  ;
+            $.jsonToHtmlTable({
+                data : data,
+                tableCssClass : 'mytable',
+                tableId : 'studentsTable'
+            }).then((data) => { dataTable = data;});
 
 
         </script>

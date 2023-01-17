@@ -40,7 +40,7 @@ Then the plugin function can be called on any container element such as Div. Fun
 }
 ```
 
- See the example below :
+ Calling the function on a container with jquery selector :
 
 ```html
 
@@ -86,6 +86,56 @@ $("#mydiv").jsonToHtmlTable({
 Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/master/sampleData.js) :
 
 ![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
+
+
+Calling the stand alon function to get the table DOM object :
+
+```html
+
+<div id="mydiv"></div>
+
+<script>
+var data = [
+{
+    "Id" : 1,
+    "Name" : "Alex Xia",
+    "Age" : 27,
+    "Grades" : {
+        "Physics" : 12,
+        "Mathematics" : 19,
+        "Computer Lab" : 20
+    },
+    "Year" : 2022
+},
+{
+    "Id" : 2,
+    "Name" : "Saba Tailorson",
+    "Age" : 29,
+    "Grades" : {
+        "Physics" : 10,
+        "Mathematics" : 20,
+        "Computer Lab" : 18
+    },
+    "Year" : 2022,
+    "Absents" : ['10th Mar','21st Jan','4th Feb']
+}
+];
+
+
+var dataTable  ;
+$.jsonToHtmlTable({
+    data : data,
+    tableCssClass : 'mytable',
+    tableId : 'studentsTable'
+}).then((data) => { dataTable = data;});
+
+</script>
+
+
+```
+
+
+
 
 ## To Do List
 

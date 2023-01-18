@@ -179,11 +179,14 @@ function initiateTable(options){
 
 async function generateTable(options) {
     if(!options.tableCssClass)
-    options.tableCssClass = "";
+        options.tableCssClass = "";
 
     // if no arraySeperator exist in options object, set default seperator
     if(!options.arraySeperator)
-        arraySeperator=", ";
+        options.arraySeperator=", ";
+
+    if(!options.columnsTitle)
+        options.columnsTitle={};       
 
     var table = initiateTable(options);
     var jsonData = await loadData(options);

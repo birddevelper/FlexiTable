@@ -35,7 +35,7 @@ Then the plugin function can be called on any container element such as Div. Fun
   tableId : id attribute of the table tag (Strig)
   rtl : Indicates right to left direction. (Boolean, Default : false)
   arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
-  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. )
+  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
 
 }
 ```
@@ -139,7 +139,10 @@ $.flexiTable({
 
 ## To Do List
 
-- CSS themes
-- Unlimited nested objects
-- Customized Titles
-- Aggregation function (Sum, Count, Avg) in footer
+-⬜️ CSS themes
+-⬜️ Unlimited nested objects
+-✅ Customized Titles (v1.1.0)
+-⬜️ Aggregation function (Sum, Count, Avg) in footer
+
+
+## Change logs :

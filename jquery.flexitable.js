@@ -31,7 +31,7 @@ function checkType(object) {
 
 
 // This function finds keys in the data and add a corresponding headers in the table
-function ExtractHeaders(list, selector) {
+function ExtractHeaders(list, selector, options) {
     var columns = [];
     var firstHeader = $('<tr/>');
     var secondHeader = $('<tr/>');
@@ -46,7 +46,7 @@ function ExtractHeaders(list, selector) {
             if ($.inArray(column, columns) == -1) {
                 columns.push(column);
                  
-                // if the column is an object retrieve its fields and add them below the root column
+                // if the column is an object, retrieve its fields and add them below the root column
                 if(checkType(row[column])=="Object"){
                     
                     innerHeaderCount = 0;
@@ -59,7 +59,10 @@ function ExtractHeaders(list, selector) {
                                 
                                 if ($.inArray(column + ',' + innerColumn, columns) == -1) {
                                     columns.push(column + ',' + innerColumn);
-                                    secondHeader.append($('<th />').html(innerColumn));
+                                    if(options.columnsTitle[column + '.' + innerColumn])
+                                        secondHeader.append($('<th />').html(options.columnsTitle[column + '.' + innerColumn]));
+                                    else
+                                        secondHeader.append($('<th />').html(innerColumn));
                                     innerHeaderCount++;
                                 }
                             
@@ -70,8 +73,14 @@ function ExtractHeaders(list, selector) {
                     removeList.push(column);
                     topLevelHeader.attr("colspan",innerHeaderCount)
                 }
-                else
-                    firstHeader.append($('<th rowspan="2" />').html(column));
+                else{
+                    if(options.columnsTitle[column])
+                        firstHeader.append($('<th rowspan="2" />').html(options.columnsTitle[column]));
+                    else
+                        firstHeader.append($('<th rowspan="2" />').html(column));
+
+                }
+                    
             }
         }
     }
@@ -94,11 +103,11 @@ function ArrayItemsSeperator(object,seperator){
     return object;
 }
 
-function buildTable(list,selector, arraySeperator) {
+function buildTable(list,selector, options) {
              
     
     // extract titles from the data and build the header of the table
-    var cols = ExtractHeaders(list, selector); 
+    var cols = ExtractHeaders(list, selector, options); 
 
     // Traversing the JSON data
     for (var i = 0; i < list.length; i++) {
@@ -109,10 +118,10 @@ function buildTable(list,selector, arraySeperator) {
             if(cols[colIndex].indexOf(',')>0){
                 fields = cols[colIndex].split(',');
                 if(list[i][fields[0]])
-                    val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],arraySeperator);
+                    val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],options.arraySeperator);
             }
             else
-                val = ArrayItemsSeperator(list[i][cols[colIndex]],arraySeperator);
+                val = ArrayItemsSeperator(list[i][cols[colIndex]],options.arraySeperator);
              
             // If there is any key, which is matching
             // with the column name
@@ -178,7 +187,7 @@ async function generateTable(options) {
 
     var table = initiateTable(options);
     var jsonData = await loadData(options);
-    buildTable(jsonData, table, options.arraySeperator);
+    buildTable(jsonData, table, options);
     return table;
 }
 

@@ -17,7 +17,7 @@ var data = [
     "Grades" : {
         "Physics" : 10,
         "Mathematics" : 20,
-        "Computer Lab" : 18
+        "Computer Lab" : 15
     },
     "Year" : 2022,
     "Absents" : ['10th Mar','21st Jan','4th Feb']

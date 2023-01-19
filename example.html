@@ -3,8 +3,10 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script src="jquery.flexitable.js" ></script>
         <script src="sampleData.js"></script>
+        <script src="sampleData2.js"></script>
         <style>
             .mytable {
+                margin-top: 30px;
                 border: 1px solid #000000;
                 width: 70%;
             }
@@ -30,10 +32,12 @@
         </style>
     </head>
     <body>
-        <div id="tableContainer"></div>
+        <div id="tableContainer_1"></div>
+
+        <div id="tableContainer_2"></div>
 
         <script>
-            $("#tableContainer").flexiTable({
+            $("#tableContainer_1").flexiTable({
                 data : data,
                 tableCssClass : 'mytable',
                 tableId : 'studentsTable',
@@ -54,6 +58,21 @@
                 tableId : 'studentsTable'
             }).then((data) => { dataTable = data;});
 
+
+
+
+            $("#tableContainer_2").flexiTable({
+                data : not_titled_data,
+                tableCssClass : 'mytable',
+                tableId : 'athletTable',
+                refreshPriod : 10000,
+                columnsTitle :{
+                    "0" : "Full Name",
+                     "1" : "Age",
+                     "2" : "Field",
+                     "3" : "Rank",
+                }
+            });
 
         </script>
     </body>

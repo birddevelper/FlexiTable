@@ -13,6 +13,7 @@ FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML ta
 - Supports nested object up to 1 level
 - Refesh data and structure in custom priods
 - Custom header titles
+- Supports both vertical and horizontal orientation of records
 - Supports CSS classes
 - Supports LTR and RTL directions
 - supports arrays as a multi-values cell
@@ -35,6 +36,7 @@ Then the plugin function can be called on any container element such as Div. Fun
   tableCssClass : Css classes to be set for table (String)
   tableId : id attribute of the table tag (Strig)
   rtl : Indicates right to left direction. (Boolean, Default : false)
+  verticalHeaders : changes the orientation of the headers to vertical (Boolean, Default : false)
   arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
   refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
   columnsTitle : a dictionary to set optional title for json path

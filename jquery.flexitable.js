@@ -191,15 +191,180 @@ async function generateTable(options) {
     var table = initiateTable(options);
     var jsonData = await loadData(options);
     buildTable(jsonData, table, options);
+    
+    if(options.verticalHeaders)
+        table= transpose(table[0]);
+
     return table;
 }
+
+
+
+
+
+function transpose(table){
+
+    // get all rows
+    const rows = Array.from(table.querySelectorAll("tr"));
+    
+    const totalRowCount = rows.length;
+    var maxColumnsInRows = 0;
+
+    // initiate transposed table
+    let transposedTable = table.cloneNode(false);
+    let transposedTBody = document.createElement("tbody");
+    transposedTable.appendChild(transposedTBody);
+
+    // get header rows count
+    let headerRowsCount=0;
+    for (let r = 0; r < 2; r++) {
+        const row = rows[r];
+        const cells = Array.from(row.querySelectorAll("th"));
+        if(cells.length>0)
+            headerRowsCount++;
+    }
+
+
+    // get max number of cells among the rows
+    for (let r = 0; r < totalRowCount; r++) {
+        const row = rows[r];
+        const cells = Array.from(row.querySelectorAll("td,th"));
+        if(cells.length>maxColumnsInRows)
+            maxColumnsInRows = cells.length;
+    }
+
+
+    // if there exist more than two header rows, so there exist an embeded object
+    // we should align the header columnar 
+    if(headerRowsCount>1){
+
+        // initiate aligning array
+        var aligningArray= [];
+
+        // initiate align controlling array
+        for(let i=0;i<maxColumnsInRows;i++){
+            aligningArray.push([0,0]);
+            let tr = document.createElement("tr");
+            transposedTBody.appendChild(tr);
+        }
+
+        // get first level header cells
+        var firstHeadercells = Array.from(rows[0].querySelectorAll("th"));
+        const rowsInNewTable = Array.from(transposedTable.querySelectorAll("tr"));
+        let transposedTableRowIndex = 0;
+        for(let i=0;i<firstHeadercells.length;i++){
+                // add first level header cells to transposed rows as first cell,
+                // having an eye on aligning array
+                let td = firstHeadercells[i].cloneNode(true);
+                let originRowSpan = firstHeadercells[i].getAttribute("rowspan") || 1;
+                let originColSpan = firstHeadercells[i].getAttribute("colspan") || 1;
+                td.setAttribute("colspan",originRowSpan);
+                td.setAttribute("rowspan",originColSpan);
+                rowsInNewTable[transposedTableRowIndex].appendChild(td);
+                // if origin rowsapn equals to 2, it means it has no child header, so in aligning array set child header to 1
+                // means it's occupied
+                if(originRowSpan=="2"){
+                    aligningArray[transposedTableRowIndex][0]=1;
+                    aligningArray[transposedTableRowIndex][1]=1;
+                }
+                else{
+                        // else, it has child so we should set child in aligning array to 0
+                        // and also occupy next n rows for n children
+                        for(let j=transposedTableRowIndex;j<transposedTableRowIndex+parseInt(originColSpan);j++){ 
+                            console.log(j);
+                            aligningArray[j][0]=1;
+                        }
+                }
+               
+                // go to n next row
+                transposedTableRowIndex+=parseInt(originColSpan);
+                    
+                   
+            
+        }
+
+        // get first level header cells
+        var secondHeadercells = Array.from(rows[1].querySelectorAll("th"));
+
+        for(let i=0;i<secondHeadercells.length;i++){
+    
+                let td = secondHeadercells[i].cloneNode(true);
+                let originRowSpan = secondHeadercells[i].getAttribute("rowspan") || 1;
+                let originColSpan = secondHeadercells[i].getAttribute("colspan") || 1;
+                td.setAttribute("colspan",originRowSpan);
+                td.setAttribute("rowspan",originColSpan);
+
+                // find eligable row to append the cell
+                eligRow=0;
+                for(let i=0;i<aligningArray.length;i++){
+                    if(aligningArray[i][1]==0)
+                        {
+                            eligRow = i;
+                            aligningArray[i][1]=1;
+                            break;
+                        }
+                }
+
+                // append the cell
+                rowsInNewTable[eligRow].appendChild(td);
+
+        }
+
+        // add data to transposed table
+        for(let r=0;r<maxColumnsInRows;r++){
+            let tr = document.createElement("tr");
+            for(let c=2;c<totalRowCount;c++){
+                rw = rows[c];
+                cels = Array.from(rw.querySelectorAll("td,th"));
+          
+                if(cels[r]){
+                    let td = cels[r].cloneNode(true);
+                    let originRowSpan = cels[r].getAttribute("rowspan") || 1;
+                    let originColSpan = cels[r].getAttribute("colspan") || 1;
+                    td.setAttribute("colspan",originRowSpan);
+                    td.setAttribute("rowspan",originColSpan);
+                    rowsInNewTable[r].appendChild(td);
+    
+                }
+            }
+        }
+
+         return transposedTable;
+    }
+
+
+
+    // if table has only one header row
+    // just transpose simple table    
+    for(let r=0;r<maxColumnsInRows;r++){
+        let tr = document.createElement("tr");
+        transposedTBody.appendChild(tr);
+        for(let c=0;c<totalRowCount;c++){
+            // get row's cell
+            const cels = Array.from(rows[c].querySelectorAll("td,th"));
+            if(cels[r]){
+                let td = cels[r].cloneNode(true);
+                let originRowSpan = cels[r].getAttribute("rowspan") || 1;
+                let originColSpan = cels[r].getAttribute("colspan") || 1;
+                // swap rowspan with colspan
+                td.setAttribute("colspan",originRowSpan);
+                td.setAttribute("rowspan",originColSpan);
+                tr.appendChild(td);
+
+            }
+        }
+    }
+
+    return transposedTable;
+}
+
+
 
 
 async function embedJsonTableToContainer(selector,options){
     var table = await generateTable(options);
     selector.html(table);
 }
-
 
 
 

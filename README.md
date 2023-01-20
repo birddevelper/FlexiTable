@@ -143,10 +143,10 @@ $.flexiTable({
 
 ## To Do List
 
--⬜️ CSS themes
--⬜️ Unlimited nested objects
--✅ Customized Titles (v1.1.0)
--⬜️ Aggregation function (Sum, Count, Avg) in footer
+- ⬜️ CSS themes
+- ⬜️ Unlimited nested objects
+- ✅ Customized Titles (v1.1.0)
+- ⬜️ Aggregation function (Sum, Count, Avg) in footer
 
 
 ## Change logs :

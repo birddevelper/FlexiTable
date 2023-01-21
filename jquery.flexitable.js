@@ -118,10 +118,10 @@ function buildTable(list,selector, options) {
             if(cols[colIndex].indexOf(',')>0){
                 fields = cols[colIndex].split(',');
                 if(list[i][fields[0]])
-                    val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],options.arraySeperator);
+                    val = ArrayItemsSeperator(list[i][fields[0]][fields[1]],options.arraySeparator);
             }
             else
-                val = ArrayItemsSeperator(list[i][cols[colIndex]],options.arraySeperator);
+                val = ArrayItemsSeperator(list[i][cols[colIndex]],options.arraySeparator);
              
             // If there is any key, which is matching
             // with the column name
@@ -181,9 +181,9 @@ async function generateTable(options) {
     if(!options.tableCssClass)
         options.tableCssClass = "";
 
-    // if no arraySeperator exist in options object, set default seperator
-    if(!options.arraySeperator)
-        options.arraySeperator=", ";
+    // if no arraySeparator exist in options object, set default seperator
+    if(!options.arraySeparator)
+        options.arraySeparator=", ";
 
     if(!options.columnsTitle)
         options.columnsTitle={};       
@@ -376,7 +376,7 @@ async function embedJsonTableToContainer(selector,options){
 //  tableCssClass : Css classes to be set for table (String)
 //  tableId : id attribute of the table tag (Strig)
 //  rtl : Indicates right to left direction. (Boolean, Default : false)
-//  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
+//  arraySeparator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
 //  refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
 // }
 $.flexiTable = $.fn.flexiTable = async function(options) {

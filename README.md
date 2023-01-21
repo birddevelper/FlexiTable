@@ -1,5 +1,8 @@
 [![npm version](https://badge.fury.io/js/jqueryjsontotable.svg)](https://badge.fury.io/js/jqueryjsontotable)
 
+
+[![FlexiTable](https://m-shaeri.ir/blog/wp-content/uploads/2023/01/Flexitable.jquery.plugin.to_.display.nested.json_.object.dynamic.column-1400x643.jpg)
+
 # FlexiTable
 
 FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML table
@@ -37,7 +40,7 @@ Then the plugin function can be called on any container element such as Div. Fun
   tableId : id attribute of the table tag (Strig)
   rtl : Indicates right to left direction. (Boolean, Default : false)
   verticalHeaders : changes the orientation of the headers to vertical (Boolean, Default : false)
-  arraySeperator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
+  arraySeparator : Indicates the character(s) between array items in cells (Strig, Default : ', ')
   refreshPriod : Time interval to re-fetch data from source. it is in millisecond. (Integer, Default : it is disabled by default. Only applicable for calling the function on a container with selector )
   columnsTitle : a dictionary to set optional title for json path
 }
@@ -138,7 +141,7 @@ $.flexiTable({
 
 ```
 
-
+For detailed plugin explanation go to [FlexiTable- A jQuery Plugin Converting Dynamic JSON with Nested Objects To HTML Table](https://m-shaeri.ir/blog/flexitable-a-jquery-plugin-converting-dynamic-json-data-to-html-table/)
 
 
 ## To Do List
@@ -147,6 +150,3 @@ $.flexiTable({
 - ⬜️ Unlimited nested objects
 - ✅ Customized Titles (v1.1.0)
 - ⬜️ Aggregation function (Sum, Count, Avg) in footer
-
-
-## Change logs :

@@ -15,10 +15,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       
       - run: npm install
-      # optional
-      - run: npm run build
-        env:
-          CI: true
       - name: Install dependencies and build 🔧
         run: npm ci && npm run build
       - name: Publish package on NPM 📦

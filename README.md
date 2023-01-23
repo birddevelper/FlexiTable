@@ -1,7 +1,7 @@
-[![npm version](https://badge.fury.io/js/jqueryjsontotable.svg)](https://badge.fury.io/js/jqueryjsontotable)
+[![npm version](https://badge.fury.io/js/jqueryflexitable.svg)](https://badge.fury.io/js/jqueryflexitable)
 
 
-[![FlexiTable](https://m-shaeri.ir/blog/wp-content/uploads/2023/01/Flexitable.jquery.plugin.to_.display.nested.json_.object.dynamic.column-1400x643.jpg)
+![FlexiTable](https://m-shaeri.ir/blog/wp-content/uploads/2023/01/Flexitable.jquery.plugin.to_.display.nested.json_.object.dynamic.column-1400x643.jpg)
 
 # FlexiTable
 

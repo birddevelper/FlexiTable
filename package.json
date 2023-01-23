@@ -1,6 +1,6 @@
 {
     "name": "jqueryflexitable",
-    "version": "1.2.2",
+    "version": "1.2.7",
     "description": "flexiTable is a professional jQuery plugin that convert JSON array list into HTML table. It supports nested object and it can retrieve data from url. It's successor of jqueryjsontotable which is deprecated",
     "main": "jquery.flexitable.js",
     "scripts": {

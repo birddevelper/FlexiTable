@@ -1,13 +1,13 @@
 [![npm version](https://badge.fury.io/js/jqueryflexitable.svg)](https://badge.fury.io/js/jqueryflexitable)
 
 
-![FlexiTable](https://m-shaeri.ir/blog/wp-content/uploads/2023/01/Flexitable.jquery.plugin.to_.display.nested.json_.object.dynamic.column-1400x643.jpg)
+![FlexiTable](https://mshaeri.com/blog/wp-content/uploads/2023/01/Flexitable.jquery.plugin.to_.display.nested.json_.object.dynamic.column-1400x643.jpg)
 
 # FlexiTable
 
 FlexiTable is a flexible jQuery plugin that convert JSON array list into HTML table
 
-![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
+![output](https://mshaeri.com/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
 
 ## Features
 
@@ -92,7 +92,7 @@ $("#mydiv").flexiTable({
 
 Output for [sampleData](https://github.com/birddevelper/jQueryJsonToTable/blob/master/sampleData.js) :
 
-![output](https://m-shaeri.ir/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
+![output](https://mshaeri.com/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
 
 
 Calling the stand alon function to get the table DOM object :

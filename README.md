@@ -5,7 +5,7 @@
 
 # FlexiTable
 
-FlexiTable is a jQuery plugin that convert JSON array containing nested JSON object into HTML table
+FlexiTable is a jQuery plugin that converts JSON array containing nested JSON object into HTML table
 
 ![output](https://mshaeri.com/blog/wp-content/uploads/2022/04/jquery_json_to_table3.jpg)
 

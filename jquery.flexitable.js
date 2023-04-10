@@ -103,6 +103,7 @@ function ArrayItemsSeperator(object,seperator){
     return object;
 }
 
+// This function builds table by given data 
 function buildTable(list,selector, options) {
              
     

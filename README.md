@@ -14,7 +14,7 @@ FlexiTable is a jQuery plugin that converts JSON array containing nested JSON ob
 - Accepts Json data
 - Accepts url to fetch json data
 - Supports nested object up to 1 level
-- Refesh data and structure in custom priods
+- Refeshs data and structure in custom priods
 - Custom header titles
 - Supports both vertical and horizontal orientation of records
 - Supports CSS classes

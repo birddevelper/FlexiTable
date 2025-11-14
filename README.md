@@ -141,7 +141,6 @@ $.flexiTable({
 
 ```
 
-For detailed plugin explanation go to [FlexiTable- A jQuery Plugin Converting Dynamic JSON with Nested Objects To HTML Table](https://mshaeri.com/blog/flexitable-a-jquery-plugin-converting-dynamic-json-data-to-html-table/)
 
 
 ## To Do List
